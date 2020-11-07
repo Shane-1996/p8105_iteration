@@ -48,7 +48,7 @@ sd(x_vec)
 z_score function a number minuous mean over the sd
 
 
-## Function
+## Simple Function
 
 
 ### Simple function for z_score
@@ -66,7 +66,7 @@ z_score_1(x_vec)
 ```
 
 
-### Complex function
+### Simple function with Check
 
 ```{r}
 z_score_2 = function(x) {
@@ -104,4 +104,30 @@ z_score_2(c(TRUE, FALSE, TRUE, FALSE))
 Not working or working in the wrong direction with simple function.
 
 
+## Multiple function
+
+```{r}
+mean_sd = function(x) {
+  
+  if (!is.numeric(x)) {
+    stop("input must be numeric")
+  }
+  
+  if (length(x)<5) {
+    stop("input must exceed 5 objects")
+  }
+  
+  mean_x = mean(x)
+  
+  sd_x = sd(x)
+  
+  tibble(
+    mean = mean_x,
+    sd = sd_x
+  )
+  
+}
+
+mean_sd(x_vec)
+```
 
