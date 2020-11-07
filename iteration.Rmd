@@ -48,10 +48,13 @@ sd(x_vec)
 z_score function a number minuous mean over the sd
 
 
-## Simple function for z_score
+## Function
+
+
+### Simple function for z_score
 
 ```{r}
-z_score = function(x){
+z_score_1 = function(x){
   
   z = (x-mean(x)) / sd(x)
   
@@ -59,8 +62,46 @@ z_score = function(x){
   
 }
 
-z_score(x_vec)
+z_score_1(x_vec)
 ```
+
+
+### Complex function
+
+```{r}
+z_score_2 = function(x) {
+  
+  if (!is.numeric(x)) {
+    stop("input must be numeric")
+  }
+  
+  if (length(x)<5) {
+    stop("input must exceed 5 objects")
+  }
+  
+  z = (x-mean(x)) / sd(x)
+  
+  return(z)
+  
+}
+
+z_score_2(x_vec)
+```
+
+
+### with other input
+
+```{r, error=TRUE}
+z_score_2(3)
+
+z_score_2("i love potato")
+
+z_score_2(mtcars)
+
+z_score_2(c(TRUE, FALSE, TRUE, FALSE))
+```
+
+Not working or working in the wrong direction with simple function.
 
 
 
