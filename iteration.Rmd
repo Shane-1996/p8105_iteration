@@ -104,6 +104,7 @@ z_score_2(c(TRUE, FALSE, TRUE, FALSE))
 Not working or working in the wrong direction with simple function.
 
 
+
 ## Multiple function
 
 ```{r}
@@ -128,6 +129,45 @@ mean_sd = function(x) {
   
 }
 
-mean_sd(x_vec)
+xx_vec = rnorm(1000)
+
+mean_sd(xx_vec)
+```
+
+
+
+## Multiple input
+
+simple input
+```{r}
+sim_data = 
+  tibble(
+    x = rnorm(n=100, mean=10, sd=5)
+  )
+
+sim_data %>% 
+  summarize(
+    mean = mean(x),
+    sd = sd(x)
+  )
+```
+
+```{r}
+sim_mean_sd = function(n, mu, sigma) {
+  
+  sim_data = 
+   tibble(
+     x = rnorm(n=n, mean=mu, sd=sigma)
+    )
+
+  sim_data %>% 
+    summarize(
+      mean = mean(x),
+     sd = sd(x)
+   )
+  
+}
+
+sim_mean_sd(1000, 50, 10)
 ```
 
