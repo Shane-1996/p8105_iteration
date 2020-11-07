@@ -153,7 +153,7 @@ sim_data %>%
 ```
 
 ```{r}
-sim_mean_sd = function(n, mu, sigma) {
+sim_mean_sd = function(n, mu=3, sigma=6) {
   
   sim_data = 
    tibble(
@@ -169,5 +169,7 @@ sim_mean_sd = function(n, mu, sigma) {
 }
 
 sim_mean_sd(1000, 50, 10)
+
+sim_mean_sd(n=150)
 ```
 
