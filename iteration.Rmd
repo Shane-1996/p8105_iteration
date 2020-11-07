@@ -31,6 +31,7 @@ scale_fill_discrete = scale_fill_viridis_d
 ```
 
 
+
 ## Get Sample
 
 ```{r}
@@ -44,4 +45,22 @@ sd(x_vec)
 
 (x_vec - mean(x_vec)) / sd(x_vec)
 ```
+z_score function a number minuous mean over the sd
+
+
+## Simple function for z_score
+
+```{r}
+z_score = function(x){
+  
+  z = (x-mean(x)) / sd(x)
+  
+  return(z)
+  
+}
+
+z_score(x_vec)
+```
+
+
 
