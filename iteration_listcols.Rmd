@@ -103,15 +103,27 @@ mean_sd(list_norm[[4]])
 ### new method
 
 ```{r}
-output = vector("list", length = 4)
+output_1 = vector("list", length = 4)
 
 for (i in 1:4) {
   
-  output[[i]] = mean_sd(list_norm[[i]])
+  output_1[[i]] = mean_sd(list_norm[[i]])
   
 }
 ```
 
+
+
+## Map
+
+```{r}
+output_2 = map(list_norm, mean_sd)
+
+output_3 = map(list_norm, median)
+
+output_2
+output_3
+```
 
 
 
