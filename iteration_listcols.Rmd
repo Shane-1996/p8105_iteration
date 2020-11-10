@@ -28,6 +28,8 @@ options(
 
 scale_colour_discrete = scale_colour_viridis_d
 scale_fill_discrete = scale_fill_viridis_d
+
+set.seed(1)
 ```
 
 
@@ -133,6 +135,42 @@ output_2 = map_df(list_norm, mean_sd, .id = "input")
 
 output_2
 output_3
+```
+
+
+
+## List columns
+
+```{r}
+listcol_df = 
+  tibble(
+    name = c("a", "b", "c", "d"),
+    samp = list_norm
+  )
+```
+
+```{r}
+listcol_df %>% pull(name)
+
+listcol_df %>% pull(samp)
+
+listcol_df %>% 
+  filter(name == "a")
+```
+
+```{r}
+listcol_df$samp[[1]]
+
+mean_sd(listcol_df$samp[[1]])
+
+map(listcol_df$samp, mean_sd)
+
+listcol_summary =
+  listcol_df %>% 
+  mutate(
+    summary = map(samp, mean_sd),
+    medians = map_dbl(samp, median)
+  )
 ```
 
 
