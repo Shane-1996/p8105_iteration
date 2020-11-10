@@ -34,8 +34,8 @@ l
     ## [4,]    4    8
     ## 
     ## $summary
-    ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    ## -2.0033 -0.7391  0.1015  0.1796  0.9735  2.8904
+    ##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+    ## -3.15196 -0.64689  0.02657  0.04502  0.60328  2.53750
 
 ``` r
 l$vec_numeric
@@ -106,7 +106,7 @@ mean_sd(list_norm[[1]])
     ## # A tibble: 1 x 2
     ##    mean    sd
     ##   <dbl> <dbl>
-    ## 1  3.00  1.23
+    ## 1  2.87  1.05
 
 ``` r
 mean_sd(list_norm[[2]])
@@ -115,16 +115,16 @@ mean_sd(list_norm[[2]])
     ## # A tibble: 1 x 2
     ##    mean    sd
     ##   <dbl> <dbl>
-    ## 1  4.75  3.08
+    ## 1  4.30  3.25
 
 ``` r
 mean_sd(list_norm[[3]])
 ```
 
     ## # A tibble: 1 x 2
-    ##      mean    sd
-    ##     <dbl> <dbl>
-    ## 1 -0.0134 0.208
+    ##       mean    sd
+    ##      <dbl> <dbl>
+    ## 1 -0.00994 0.196
 
 ``` r
 mean_sd(list_norm[[4]])
@@ -133,7 +133,7 @@ mean_sd(list_norm[[4]])
     ## # A tibble: 1 x 2
     ##    mean    sd
     ##   <dbl> <dbl>
-    ## 1 -2.76 0.907
+    ## 1 -3.04  1.01
 
 ### new method
 
@@ -161,38 +161,62 @@ output_2
     ## # A tibble: 1 x 2
     ##    mean    sd
     ##   <dbl> <dbl>
-    ## 1  3.00  1.23
+    ## 1  2.87  1.05
     ## 
     ## $b
     ## # A tibble: 1 x 2
     ##    mean    sd
     ##   <dbl> <dbl>
-    ## 1  4.75  3.08
+    ## 1  4.30  3.25
     ## 
     ## $c
     ## # A tibble: 1 x 2
-    ##      mean    sd
-    ##     <dbl> <dbl>
-    ## 1 -0.0134 0.208
+    ##       mean    sd
+    ##      <dbl> <dbl>
+    ## 1 -0.00994 0.196
     ## 
     ## $d
     ## # A tibble: 1 x 2
     ##    mean    sd
     ##   <dbl> <dbl>
-    ## 1 -2.76 0.907
+    ## 1 -3.04  1.01
 
 ``` r
 output_3
 ```
 
     ## $a
-    ## [1] 2.813455
+    ## [1] 2.953705
     ## 
     ## $b
-    ## [1] 4.332304
+    ## [1] 4.461937
     ## 
     ## $c
-    ## [1] -0.01346129
+    ## [1] 0.004556636
     ## 
     ## $d
-    ## [1] -2.810164
+    ## [1] -3.130791
+
+``` r
+output_3 = map_dbl(list_norm, median)
+
+output_2 = map_df(list_norm, mean_sd, .id = "input")
+
+
+output_2
+```
+
+    ## # A tibble: 4 x 3
+    ##   input     mean    sd
+    ##   <chr>    <dbl> <dbl>
+    ## 1 a      2.87    1.05 
+    ## 2 b      4.30    3.25 
+    ## 3 c     -0.00994 0.196
+    ## 4 d     -3.04    1.01
+
+``` r
+output_3
+```
+
+    ##            a            b            c            d 
+    ##  2.953704873  4.461936814  0.004556636 -3.130790731

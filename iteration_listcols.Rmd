@@ -125,5 +125,14 @@ output_2
 output_3
 ```
 
+```{r}
+output_3 = map_dbl(list_norm, median)
+
+output_2 = map_df(list_norm, mean_sd, .id = "input")
+
+
+output_2
+output_3
+```
 
 
